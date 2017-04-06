@@ -5,7 +5,7 @@
 <br/>
 <br/>
 
-##### Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/FreeCodeCamp/full/mVEJag.
+##### Objective: Build a CodePen.io app that is functionally similar to [this](https://codepen.io/FreeCodeCamp/full/mVEJag)
 ##### Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
 - User Story: I can see where all Meteorites landed on a world map.
 - User Story: I can tell the relative size of the meteorite, just by looking at the way it's represented on the map.
