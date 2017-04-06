@@ -71,35 +71,35 @@ d3.json("world-50m.v1.json", function(error, world) {
         .attr("stroke", "#ccc")
         .attr("stroke-width", "0.5")
         .attr("d", path);
+
+    d3.json('meteorites.json', function(data) {
+        circle = g.selectAll('circle')
+            .data(data.features)
+            .enter().append('circle')
+            .attr('stroke', 'black')
+            .attr('stroke-width', '0.5')
+            .attr('cx', (d) =>  projection([d.properties.reclong,d.properties.reclat])[0] )
+            .attr('cy', (d) => projection([d.properties.reclong,d.properties.reclat])[1] )
+            .attr('r', (d) => (getRadius(d.properties.mass,1)))
+            .style('fill', 'orange')
+            .style('opacity', 0.6)
+            .on('mouseover', function (d) {
+                d3.select(this).style("opacity", 1);
+                var date = d.properties.year.split('T'),
+                    year = date[0].split('-');
+
+                details.html('Meteorite: '+d.properties.name+'<br>Year: '+year[0]+'<br>Latitude: '+d.geometry.coordinates[1]+'<br>Longitude: '+d.geometry.coordinates[0]+'<br>Mass: '+d.properties.mass+'g<br>Class: '+d.properties.recclass)
+                    .style('visibility', 'visible')
+                    .style('left', (d3.event.pageX + 10)+'px')
+                    .style('top', (d3.event.pageY - 30)+'px')
+            }) //end .on(mouseover)
+            .on('mouseout', function (d) {
+                d3.select(this).style('opacity', 0.6);
+                details.style('visibility', 'hidden');
+            }); //end .on('mouseout)
+        ; //end circle
+    }); //end meteorites.json
 }); //end world-50m.v1.json
-
-d3.json('meteorites.json', function(data) {
-    circle = g.selectAll('circle')
-        .data(data.features)
-        .enter().append('circle')
-        .attr('stroke', 'black')
-        .attr('stroke-width', '0.5')
-        .attr('cx', (d) =>  projection([d.properties.reclong,d.properties.reclat])[0] )
-        .attr('cy', (d) => projection([d.properties.reclong,d.properties.reclat])[1] )
-        .attr('r', (d) => (getRadius(d.properties.mass,1)))
-        .style('fill', 'orange')
-        .style('opacity', 0.6)
-        .on('mouseover', function (d) {
-            d3.select(this).style("opacity", 1);
-            var date = d.properties.year.split('T'),
-                year = date[0].split('-');
-
-            details.html('Meteorite: '+d.properties.name+'<br>Year: '+year[0]+'<br>Latitude: '+d.geometry.coordinates[1]+'<br>Longitude: '+d.geometry.coordinates[0]+'<br>Mass: '+d.properties.mass+'g<br>Class: '+d.properties.recclass)
-                .style('visibility', 'visible')
-                .style('left', (d3.event.pageX + 10)+'px')
-                .style('top', (d3.event.pageY - 30)+'px')
-        }) //end .on(mouseover)
-        .on('mouseout', function (d) {
-            d3.select(this).style('opacity', 0.6);
-            details.style('visibility', 'hidden');
-        }); //end .on('mouseout)
-    ; //end var circle
-}); //end meteorites.json
 
 function zoomed() {
     console.log('k='+d3.event.transform.k+' x='+d3.event.transform.x+' y='+d3.event.transform.y);
