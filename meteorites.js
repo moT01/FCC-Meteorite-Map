@@ -45,7 +45,7 @@ var g = svg.append('g');
 
 //create details window (little window that comes up on hover)
 var details = d3.select('body').append('div')
-    .style('background-color', 'rgba(0,0,0,0.4)')
+    .style('background-color', 'orange')
     .style('position', 'absolute')
     .style('box-shadow', '1px 1px 2px 1px #111')
     .style('padding', '3px 6px')
