@@ -1,5 +1,5 @@
 ## FCC-Meteorite-Map
-##### Map Data Across The Globe Project for [freecodecamp.com](https://www.freecodecamp.com/challenges/map-data-across-the-globe)
+##### Map Data Across The Globe Project for [freeCodeCamp](https://www.freecodecamp.org/)
 ##### Check it out [here](https://mot01.github.io/FCC-Meteorite-Map/)
 
 <br/>
